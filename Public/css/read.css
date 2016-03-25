@@ -1,0 +1,17 @@
+.main{
+	background: url("../images/mainbg.jpg");
+}
+table{
+	margin-top: 50px;
+}
+.sent{
+	margin-bottom: 20px;
+}
+h3{
+	display: block;
+	border-bottom: 1px dotted #000;
+	height: 50px;
+}
+.bottom{
+	margin-top: 15px;
+}

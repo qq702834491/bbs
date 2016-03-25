@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>注册成功即可成为本站会员</title>
+	<link rel="stylesheet" href="__PUBLIC__/Bootstrap/css/bootstrap.min.css">
+	<script src="__PUBLIC__/Bootstrap/js/jquery.min.js"></script>
+	<script src="__PUBLIC__/Bootstrap/js/bootstrap.min.js"></script>
+	<link rel="stylesheet" href="__PUBLIC__/css/register.css">
+	<link rel="stylesheet" href="__PUBLIC__/css/header.css">
+	<link rel="stylesheet" href="__PUBLIC__/css/footer.css">
+	<script src="__PUBLIC__/jquery-validation-1.14.0/dist/jquery.validate.min.js"></script>
+	<script src="__PUBLIC__/js/register.js"></script>
+</head>
+<body>
+	<if condition="session('login')!=0">
+		<include file="public:welcome" />
+		<div class="container text-center">
+			<div class="register-error ">
+				请退出登录再进行注册操作，恶意注册账号会导致ip被封禁
+			</div>
+		</div>
+	<else /> 
+		<include file="public/header" />
+		<div class="container main">
+		<div class="col-md-3 col-md-offset-4">
+			<h3>注册 <small class="des"> 请填写注册信息</small></h3>
+			<form class="form-horization" action="__CONTROLLER__/register" method="post">
+				<div class="form-group input-group">
+					<span class="input-group-addon"><span class="glyphicon glyphicon-user"></span></span>
+					<input class="form-control" type="text" name="username" placeholder="用户名">
+				</div>
+				<div class="form-group input-group">
+					<span class="input-group-addon"><span class="glyphicon glyphicon-asterisk"></span></span>
+					<input class="form-control" type="password" id="password" name="password" placeholder="密码">
+				</div>
+				<div class="form-group input-group">
+					<span class="input-group-addon"><span class="glyphicon glyphicon-check"></span></span>
+					<input class="form-control" type="password" name="conpwd" placeholder="确认密码">
+				</div>
+				<div class="form-group input-group">
+					<span class="input-group-addon"><span class="glyphicon glyphicon-envelope"></span></span>
+					<input class="form-control" type="text" name="email" placeholder="邮箱地址">
+				</div>
+				<div class="form-group input-group">
+					<span class="input-group-addon"><span class="glyphicon glyphicon-phone"></span></span>
+					<input class="form-control" type="text" name="phone" placeholder="手机号码">
+				</div>
+				<div class="form-group input-group">
+					<div class="row">
+						<div class="col-md-6">
+							<input class="form-control vcode" type="text" name="vcode" placeholder="验证码">
+						</div>
+						<div class="col-md-4">
+							<img src="__MODULE__/index/verify">
+						</div>
+					</div>
+				</div>
+				<div class="form-group input-group">
+					<div class="ckeckbox">
+						<label>
+							<input type="checkbox" id="xieyi" name="xieyi" value="agree" checked>我接受<a href="">**协议</a>
+						</label>
+					</div>
+				</div>
+				<div class="form-group">
+					<button id="ss" class="btn btn-primary" type="submit">注册</button> 
+				</div>
+			</form>
+			</div>
+		</div>
+	</if>
+	<include file="public/footer" />
+</body>
+</html>

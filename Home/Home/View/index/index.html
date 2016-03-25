@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>网站首页</title>
+	<link rel="stylesheet" href="__PUBLIC__/css/index.css">
+	<link rel="stylesheet" href="__PUBLIC__/css/header.css">
+	<link rel="stylesheet" href="__PUBLIC__/css/footer.css">
+	<link rel="stylesheet" type="text/css" href="__PUBLIC__/css/nav.css">
+	<link rel="stylesheet" href="__PUBLIC__/Bootstrap/css/bootstrap.min.css">
+	<script src="__PUBLIC__/Bootstrap/js/jquery.min.js"></script>
+	<script src="__PUBLIC__/Bootstrap/js/bootstrap.min.js"></script>
+	<script src="__PUBLIC__/js/nav.js"></script>
+	<script src="__PUBLIC__/js/index.js"></script>
+</head>
+<body>
+	<if condition="session('login')!=0">
+		<include file="public:welcome" />
+		<include file="public/nav" />
+	<else /> 
+		<include file="public/header" />
+	</if>
+	<div class="container main">
+	<div class="col-md-10 col-md-offset-1">
+		<table>
+		<caption class="text-left">帖子：</caption>
+		<foreach name="list" item="topics">
+			<tr>
+				<td class="col-md-8">
+					<a href="__MODULE__/publish/read/id/{$topics.id}">
+						<if condition="strlen($topics['title']) gt 30">
+							{:mb_substr($topics['title'],0,10,'utf-8')}...
+						<else />
+							{$topics.title}
+						</if>
+					</a>
+				</td>
+				<td class="col-md-1 text-center">{$topics.username}</td>
+				<td class="col-md-2 text-center">{$topics.sent_time|date='m-d H:i',###}</td>
+			</tr>
+			<tr class="content">
+				<td class="col-md-8">
+					<if condition="strlen($topics['content']) gt 70">
+						{:mb_substr($topics['content'],0,23,'utf-8')}...
+					<else />
+						{$topics.content}
+					</if>
+				</td>
+				<td class="col-md-1 text-center"></td>
+				<td class="col-md-2 text-center">{$topics.last_time|date='m-d H:i',###}</td>
+			</tr>
+		</foreach>
+		</table>
+		<div class="page text-center">{$page}</div>
+	</div>
+	<img src="__PUBLIC__/images/totop.png" id="back-to-top">
+	<div class="sent">
+		<form id="sent" class="form-horization" action="__MODULE__/Publish/publish" method="post">
+			<span class="help-block">{$msg}</span>
+			<div class="input-group bottom col-md-8 col-md-offset-2">
+				<span class="input-group-addon">标题：</span>
+				<input type="text" name="title" id="title" class="form-control">
+			</div>
+			<div class="input-group bottom col-md-8 col-md-offset-2">
+				<span class="input-group-addon">内容：</span>
+				<textarea class="form-control" rows="5" id="content" name="content"></textarea>
+			</div>
+			<div class="input-group bottom col-md-offset-2">
+				<button type="submit" id="submit" class="btn btn-primary">发表</button>
+			</div>
+		</form>
+	</div>
+	</div>
+	<include file="public/footer" />
+</body>
+<script type="text/javascript">
+$().ready(function(){
+if({:session('login')==0}){
+	$('#submit').attr('disabled',true);
+	$('#title').attr('placeholder','登陆后就可以发帖啦');
+	$('#title').attr('disabled',true);
+	$('#content').attr('disabled',true);
+}
+});
+</script>
+</html>

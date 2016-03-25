@@ -1,0 +1,10 @@
+.header{
+	background: #272822;
+	height: 30px;
+	color: #fff;
+	line-height: 30px;
+	font-family: 微软雅黑;
+}
+.header a{
+	color:#fff;
+}

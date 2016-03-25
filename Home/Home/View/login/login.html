@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>欢迎来到本论坛，请登录</title>
+	<link rel="stylesheet" href="__PUBLIC__/Bootstrap/css/bootstrap.min.css">
+	<script src="__PUBLIC__/Bootstrap/js/jquery.min.js"></script>
+	<script src="__PUBLIC__/Bootstrap/js/bootstrap.min.js"></script>
+	<link rel="stylesheet" href="__PUBLIC__/css/login.css">
+	<link rel="stylesheet" href="__PUBLIC__/css/header.css">
+	<link rel="stylesheet" href="__PUBLIC__/css/footer.css">
+</head>
+<body>
+	<if condition="session('login')!=0">
+		<include file="public:welcome" />
+		<div class="container text-center">
+			<div class="register-error ">
+				请退出登录再进行登录操作，恶意注册账号会导致ip被封禁
+			</div>
+		</div>
+	<else /> 
+		<include file="public/header" />
+		<div class="container main">
+			<div class="col-md-3 col-md-offset-8">
+				<h3>登录 <small class="des"> 请填写登录信息</small></h3>
+				<form class="form-horization" action="__CONTROLLER__/login" method="post">
+					<div class="form-group">
+						<span class="help-block check">{$msg}</span>
+						<div class="input-group">
+							<span class="input-group-addon"><span class="glyphicon glyphicon-user"></span></span>
+							<input type="text" name="username" id="username" placeholder="用户名" class="form-control">
+						</div>
+					</div>
+					<div class="form-group">
+						<div class="input-group">
+							<span class="input-group-addon"><span class="glyphicon glyphicon-asterisk"></span></span>
+							<input type="password" name="password" id="pwd" placeholder="密码" class="form-control">
+						</div>
+						<a href="" class="help-block forget">忘记密码？</a>	
+					</div>
+					<div class="form-group">
+						<button type="submit" class="btn btn-primary">登录</button>
+					</div>
+				</form>
+			</div>
+		</div>
+	</if>
+	<include file="public/footer" />
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,33 @@
+.main{
+	background: url("../images/login_bg.jpg") no-repeat;
+	height: 710px;
+}
+.check{
+	color: red;
+	font-size: 13px;
+}
+.des{
+	color:#ccc;
+}
+
+.form-group{
+	margin:30px 10px;
+}
+.col-md-3{
+	border: 1px dashed #ccc;
+	margin-top: 100px;
+}
+button{
+	width: 100%;
+}
+
+.forget{
+	font-size: 12px;
+	padding-left: 5px;
+	display: inline;
+}
+.register-error{
+	color: red;
+	font-size: 20px;
+	margin-top: 100px;
+}

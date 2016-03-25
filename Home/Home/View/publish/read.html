@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>{$row[0]['title']}</title>
+	<link rel="stylesheet" href="__PUBLIC__/css/header.css">
+	<link rel="stylesheet" href="__PUBLIC__/css/footer.css">
+	<link rel="stylesheet" type="text/css" href="__PUBLIC__/css/read.css">
+	<link rel="stylesheet" href="__PUBLIC__/Bootstrap/css/bootstrap.min.css">
+	<script src="__PUBLIC__/Bootstrap/js/jquery.min.js"></script>
+	<script src="__PUBLIC__/Bootstrap/js/bootstrap.min.js"></script>
+</head>
+<body>
+	<if condition="session('login')!=0">
+		<include file="public:welcome" />
+	<else /> 
+		<include file="public/header" />
+	</if>
+	<div class="container main">
+		<table border="1">
+			<foreach name="row" item="k">
+				<h3>{$k.title}</h3>
+				<tr>
+					<td>{$k.username}</td>
+					<td>{$k.content}</td>
+				</tr>
+				<tr>
+					<td>{$k.sent_time|date='m-d H:i',###}</td>
+					<td><a href="">回复</a></td>
+				</tr>
+			</foreach>
+			<foreach name="list" item="v">
+				<tr>
+					<td>{$v.username}</td>
+					<td>{$v.reply}</td>
+				</tr>
+				<tr>
+					<td>{$v.sent_time|date='m-d H:i',###}</td>
+					<td><a href="">回复</a></td>
+				</tr>
+			</foreach>
+		</table>
+		<div class="sent">
+			<form id="sent" class="form-horization" action="__MODULE__/Publish/reply" method="post">
+				<span class="help-block">{$msg}</span>
+				<input type="hidden" name="title_id" value="{$_GET['id']}">
+				<div class="input-group bottom col-md-8 col-md-offset-2">
+					<span class="input-group-addon">内容：</span>
+					<textarea class="form-control" rows="5" id="content" name="reply"></textarea>
+				</div>
+				<div class="input-group bottom col-md-offset-2">
+					<button type="submit" id="submit" class="btn btn-primary">发表</button>
+				</div>
+			</form>
+		</div>
+	</div>
+	<include file="public/footer" />
+</body>
+</html>

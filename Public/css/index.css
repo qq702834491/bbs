@@ -1,0 +1,23 @@
+.main{
+	background: url("../images/mainbg.jpg");
+}
+table{
+	margin-top: 50px;
+}
+tr{
+	height: 40px;
+}
+.content{
+	background: #fff;
+}
+.bottom{
+	margin-top: 15px;
+}
+#back-to-top{
+	display: none;
+	position: fixed;
+	bottom:50px;
+}
+.sent{
+	margin-bottom: 20px;
+}

@@ -1,0 +1,12 @@
+.nav{
+	background: #369;
+}
+button{
+	margin-left: 10px;
+}
+.navbar-nav a{
+	color: #fff;
+}
+.navbar-nav a:hover{
+	color: #369;
+}
